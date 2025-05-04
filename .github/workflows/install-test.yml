@@ -1,0 +1,12 @@
+name: Install test
+
+on:
+  pull_request:
+    types: [labeled]
+  schedule:
+    - cron: '1 10 * * 1'
+
+jobs:
+  install_test:
+    if: ${{ github.event.label.name == 'install_test' || github.event.schedule == '1 10 * * 1' }}
+    uses: ./.github/workflows/local-install.yml
