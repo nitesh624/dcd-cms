@@ -1,47 +1,102 @@
-# Drupal CMS
+# Drupal Camp delhi
 
-Drupal CMS is a fast-moving open source product that enables site builders to easily create new Drupal sites and extend them with smart defaults, all using their browser.
+Drupal camp delhi repo is build on top of drupal cms.
 
-## Getting started
+## Tools & Prerequisites
 
-If you want to use [DDEV](https://ddev.com) to run Drupal CMS locally, follow these instructions:
+The following tools are required for setting up the site.
 
-1. Install DDEV following the [documentation](https://ddev.com/get-started/)
-2. Open the command line and `cd` to the root directory of this project
-3. Run the following commands:
-```shell
-ddev config --project-type=drupal11 --docroot=web
-ddev start
-ddev composer install
-ddev launch
+- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) - v2.17.1 or higher
+- [Composer](https://getcomposer.org/download/) - v2 or higher
+- [ddev](https://github.com/drud/ddev) - v1.17.0
+- [nodejs](https://nodejs.org/en/download/) - v16 or higher
+- [yarn](https://classic.yarnpkg.com/lang/en/docs/install)
+
+Note: Please make sure you have all above tools in-place before
+you start with next tasks.
+
+---
+
+## Setting up the project
+
+### Step 1] Git repository setup:
+
+1. Create a fork of the repository.
+2. Clone the project.
+3. Setup a SSH key that can be used for Github
+   1. [Setup Github SSH Keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+
+```
+    $ git clone <your_fork>
+```
+4. Add the upstream URL.
+```
+git remote add upstream git@github.com:guptahemant/dcd-cms.git
 ```
 
-Drupal CMS has the same system requirements as Drupal core, so you can use your preferred setup to run it locally. [See the Drupal User Guide for more information](https://www.drupal.org/docs/user_guide/en/installation-chapter.html) on how to set up Drupal.
+### Step 2] Local environment (DDEV) setup:
 
-### Installation options
+#### Pre-requisites
 
-The Drupal CMS installer offers a list of features preconfigured with smart defaults. You will be able to customize whatever you choose, and add additional features, once you are logged in.
+- Docker
+- Docker Compose
+- DDEV
+- Make sure your ssh pub keys are added to dev server for db sync.
 
-After the installer is complete, you will land on the dashboard.
+#### Drush Aliases
+Use drush aliases to specifically target a local site. List of all aliases can
+be found by running:
+```
+ddev drush sa
+```
+For finding out the URL of a site use the information in drush alias.
 
-## Documentation
+Current local aliases
+- ddev.local - Use to target local site.
 
-Coming soon ... [We're working on Drupal CMS specific documentation](https://www.drupal.org/project/drupal_cms/issues/3454527).
+#### 2.1] Run the following command to setup project
 
-In the meantime, learn more about managing a Drupal-based application in the [Drupal User Guide](https://www.drupal.org/docs/user_guide/en/index.html).
+- `ddev start`
+- Require all packages `ddev composer install`
 
-## Contributing
+#### 2.2] Install drupal site from scratch (optional / Needed to be done once).
+- Check database name using `drush @alias status` (if performing on server).
+- Verify database name on acquia cloud.
+- Cloud path: Application > Environment > Databases > Database name > Settings > Name.
+- `ddev drush @alias si --existing-config`
+- `ddev drush @alias cim -y`
 
-Drupal CMS is developed in the open on [Drupal.org](https://www.drupal.org). We are grateful to the community for reporting bugs and contributing fixes and improvements.
+#### 2.3] Syncing local with remote database (To be updated).
+- Authorize ddev to use your keys `ddev auth ssh`
+- Take the db dump from the remote site: `ddev drush @alias sql-dump > db_dump.sql`
+- Import db dump to a local site: `ddev drush @alias sql-cli < db_dump.sql`
+- To login use `ddev drush @alias uli`
 
-[Report issues in the queue](https://drupal.org/node/add/project-issue/drupal_cms), providing as much detail as you can. You can also join the #drupal-cms-support channel in the [Drupal Slack community](https://www.drupal.org/slack).
+#### 2.4] Frontend setup.
+- To be added
 
-Drupal CMS has adopted a [code of conduct](https://www.drupal.org/dcoc) that we expect all participants to adhere to.
+## Development workflow before starting work on any new task.
+Active development branch is `develop`
 
-To contribute to Drupal CMS development, see the [drupal_cms project](https://www.drupal.org/project/drupal_cms).
+### Step 1] Take the latest pull from develop branch
+- `git checkout develop`
+- `git pull upstream develop`
 
-## License
+### Step 2] Update your local to reflect all the latest changes.
+- `ddev composer install`
+- `ddev drush @alias updb -y`
+- `ddev drush @alias cim -y`
+- FE updates: `cd docroot/themes/custom/diabetespro && nvm i && npm run build:drupal`
 
-Drupal CMS and all derivative works are licensed under the [GNU General Public License, version 2 or later](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
+### Step 2] Create a feature branch from develop branch.
+- `git chechout -b feature/new-branch`
+- Perform work on local.
+- Export any config changes.
+- Make sure while exporting the config changes to properly use the config splits.
 
-Learn about the [Drupal trademark and logo policy here](https://www.drupal.com/trademark).
+### Step 3] Create a pull request for your work.
+
+- https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
+
+## Troubleshooting
+- Use github issues to report any issues you encounter.

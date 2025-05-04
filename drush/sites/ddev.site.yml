@@ -1,0 +1,3 @@
+local:
+  root: /var/www/html/docroot
+  uri: https://dcd.ddev.site
