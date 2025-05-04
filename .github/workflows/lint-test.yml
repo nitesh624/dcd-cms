@@ -1,0 +1,48 @@
+name: Lint & Test
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  build_test:
+    name: Build Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup PHP 8.3
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.3'
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install dependencies
+      run: |
+        composer validate
+        composer install
+
+    - id: files
+      uses: jitterbit/get-changed-files@v1
+
+    - name: Run code standard checks
+      run: |
+        echo ${{ steps.files.outputs.added_modified }}
+        vendor/bin/phpcs --standard=Drupal,DrupalPractice --extensions=php,module,inc,install,test,profile,theme,info,yml --encoding=utf-8 -p ${{ steps.files.outputs.added_modified }}
+
+    - name: Run phpstan checks
+      run: |
+        echo ${{ steps.files.outputs.added_modified }}
+        vendor/bin/phpstan analyse ${{ steps.files.outputs.added_modified }}
+

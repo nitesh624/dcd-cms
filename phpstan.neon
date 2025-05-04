@@ -1,0 +1,8 @@
+parameters:
+  level: 1
+  reportUnmatchedIgnoredErrors: false
+  ignoreErrors:
+    # new static() is a best practice in Drupal, so we cannot fix that.
+    - "#^Unsafe usage of new static#"
+    - '#Variable \$app_root might not be defined.#'
+    - '#Variable \$site_path might not be defined.#'
