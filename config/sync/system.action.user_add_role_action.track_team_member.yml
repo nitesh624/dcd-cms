@@ -1,0 +1,14 @@
+uuid: 947944bb-25dc-49ae-b9d2-e891b5b0fb63
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.track_team_member
+  module:
+    - user
+id: user_add_role_action.track_team_member
+label: 'Add the Track team Member role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: track_team_member
