@@ -1,0 +1,14 @@
+name: DCD
+type: theme
+description: 'Drupal camp delhi site built on top of drupal cms'
+core_version_requirement: ^10 || ^11
+base theme: stable9
+libraries:
+  - dcd/global-styling
+regions:
+  header: Header
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  content: Content
+  sidebar: Sidebar
+  footer: Footer
