@@ -1,0 +1,14 @@
+uuid: 0df47764-5a94-4d99-b628-672a721ec29f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.track_team_lead
+  module:
+    - user
+id: user_add_role_action.track_team_lead
+label: 'Add the Track team lead role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: track_team_lead

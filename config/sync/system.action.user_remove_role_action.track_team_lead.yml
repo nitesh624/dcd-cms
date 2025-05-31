@@ -1,0 +1,14 @@
+uuid: 160ce0f6-363f-4b59-b80f-9345aa8e83ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.track_team_lead
+  module:
+    - user
+id: user_remove_role_action.track_team_lead
+label: 'Remove the Track team lead role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: track_team_lead
