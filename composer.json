@@ -21,6 +21,7 @@
         "drupal/core-composer-scaffold": "^11.1.4",
         "drupal/core-project-message": "^11.1.4",
         "drupal/core-recommended": "^11.1.4",
+        "drupal/default_content_deploy": "^2.1",
         "drupal/devel": "^5.3",
         "drupal/drupal_cms_accessibility_tools": "~1.1.0",
         "drupal/drupal_cms_ai": "~1.1.0",
