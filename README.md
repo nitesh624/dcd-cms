@@ -59,12 +59,12 @@ Current local aliases
 - `ddev start`
 - Require all packages `ddev composer install`
 
-#### 2.2] Install drupal site from scratch (optional / Needed to be done once).
+#### 2.2] Install drupal site from scratch (Needed to be done for initial setup).
 - Check database name using `drush @alias status` (if performing on server).
 - Verify database name on acquia cloud.
 - Cloud path: Application > Environment > Databases > Database name > Settings > Name.
-- `ddev drush @alias si --existing-config`
-- `ddev drush @alias cim -y`
+- `ddev drush si --existing-config -y`
+- `ddev drush cim -y`
 
 #### 2.3] Syncing local with remote database (To be updated).
 - Authorize ddev to use your keys `ddev auth ssh`
@@ -84,9 +84,9 @@ Active development branch is `develop`
 
 ### Step 2] Update your local to reflect all the latest changes.
 - `ddev composer install`
-- `ddev drush @alias updb -y`
-- `ddev drush @alias cim -y`
-- FE updates: `cd docroot/themes/custom/diabetespro && nvm i && npm run build:drupal`
+- `ddev drush updb -y`
+- `ddev drush cim -y`
+- FE updates: TBD
 
 ### Step 2] Create a feature branch from develop branch.
 - `git chechout -b feature/new-branch`
