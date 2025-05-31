@@ -1,0 +1,24 @@
+uuid: 2146abf9-d2f1-4a60-a809-55c8ae9e6b1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.video_component
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.video_component.body
+field_name: body
+entity_type: block_content
+bundle: video_component
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary
