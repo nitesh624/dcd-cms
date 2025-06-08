@@ -12,9 +12,13 @@ dependencies:
     - taxonomy.vocabulary.track_category
   module:
     - content_moderation
+    - csv_serialization
     - node
+    - rest
+    - serialization
     - taxonomy
     - user
+    - views_data_export
 id: list_of_papers
 label: 'List of papers'
 module: views
@@ -777,7 +781,7 @@ display:
           admin_label: ''
           plugin_id: boolean
           operator: '='
-          value: ''
+          value: '0'
           group: 1
           exposed: true
           expose:
@@ -789,7 +793,7 @@ display:
             operator_limit_selection: false
             operator_list: {  }
             identifier: field_first_time_session_value
-            required: true
+            required: false
             remember: false
             multiple: false
             remember_roles:
@@ -894,12 +898,179 @@ display:
         - 'config:field.storage.node.field_track'
         - 'config:field.storage.node.field_track_category'
         - 'config:workflow_list'
+  data_export_1:
+    id: data_export_1
+    display_title: 'Data export'
+    display_plugin: data_export
+    position: 2
+    display_options:
+      sorts:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+          granularity: second
+      style:
+        type: data_export
+        options:
+          formats:
+            csv: csv
+          csv_settings:
+            delimiter: ','
+            enclosure: '"'
+            escape_char: \
+            strip_tags: true
+            trim: true
+            encoding: utf8
+            utf8_bom: '0'
+            use_serializer_encode_only: false
+      row:
+        type: data_field
+        options:
+          field_options:
+            nid:
+              alias: Paper-Id
+              raw_output: false
+            title:
+              alias: Title
+              raw_output: false
+            field_track:
+              alias: Track
+              raw_output: false
+            field_track_category:
+              alias: Track-Category
+              raw_output: false
+            created:
+              alias: ''
+              raw_output: false
+            field_session_type:
+              alias: Session-Type
+              raw_output: false
+            moderation_state:
+              alias: Status
+              raw_output: false
+            field_first_time_session:
+              alias: First-time-session
+              raw_output: false
+      defaults:
+        sorts: false
+      display_extenders: {  }
+      path: export/papers.csv
+      displays:
+        page_1: page_1
+        default: '0'
+      filename: ''
+      automatic_download: true
+      export_method: batch
+      export_batch_size: 1000
+      store_in_public_file_directory: null
+      custom_redirect_path: false
+      redirect_to_display: none
+      include_query_params: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_first_time_session'
+        - 'config:field.storage.node.field_session_type'
+        - 'config:field.storage.node.field_track'
+        - 'config:field.storage.node.field_track_category'
+        - 'config:workflow_list'
   page_1:
     id: page_1
     display_title: Page
     display_plugin: page
     position: 1
     display_options:
+      pager:
+        type: full
+        options:
+          offset: 0
+          pagination_heading_level: h4
+          items_per_page: 50
+          total_pages: null
+          id: 0
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      sorts:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+          granularity: second
+      defaults:
+        pager: false
+        sorts: false
       display_extenders: {  }
       path: papers
     cache_metadata:
