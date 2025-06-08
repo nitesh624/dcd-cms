@@ -1073,6 +1073,7 @@ display:
         sorts: false
       display_extenders: {  }
       path: papers
+      use_admin_theme: true
     cache_metadata:
       max-age: -1
       contexts:
