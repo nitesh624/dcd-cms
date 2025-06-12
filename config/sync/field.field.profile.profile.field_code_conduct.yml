@@ -1,0 +1,21 @@
+uuid: 87a45be9-b0f6-4856-9ef7-97e893ac00cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_code_conduct
+    - profile.type.profile
+id: profile.profile.field_code_conduct
+field_name: field_code_conduct
+entity_type: profile
+bundle: profile
+label: 'Code of conduct'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

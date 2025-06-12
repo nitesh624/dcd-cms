@@ -1,0 +1,21 @@
+uuid: 7f27c8ed-6c01-4eeb-8798-c05b824a74be
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_phone
+    - profile.type.profile
+  module:
+    - telephone
+id: profile.profile.field_phone
+field_name: field_phone
+entity_type: profile
+bundle: profile
+label: Phone
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

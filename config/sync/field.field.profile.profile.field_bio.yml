@@ -1,0 +1,24 @@
+uuid: e8c02e50-4299-4446-ae80-b539e7924355
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_bio
+    - filter.format.plain_text
+    - profile.type.profile
+  module:
+    - text
+id: profile.profile.field_bio
+field_name: field_bio
+entity_type: profile
+bundle: profile
+label: Bio
+description: 'Enter profile details.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - plain_text
+field_type: text_long

@@ -1,0 +1,24 @@
+uuid: e07b6951-755c-4e89-b69b-69dc312f2ba5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_country
+    - profile.type.profile
+  module:
+    - address
+id: profile.profile.field_country
+field_name: field_country
+entity_type: profile
+bundle: profile
+label: Country
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: IN
+default_value_callback: ''
+settings:
+  available_countries: {  }
+field_type: address_country

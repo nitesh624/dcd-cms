@@ -1,15 +1,18 @@
-uuid: e4f84edd-3a05-4887-a712-859e5f53d151
+uuid: 3dc236f3-f264-4530-a34c-bf1e062517c4
 langcode: en
 status: true
 dependencies:
+  config:
+    - core.entity_form_mode.user.register
   module:
+    - profile
     - user
 _core:
   default_config_hash: pojsLtV41YIYgWaeuqfl6yG8fsVXhC1iVB7XwKG0nMc
-id: user.user.default
+id: user.user.register
 targetEntityType: user
 bundle: user
-mode: default
+mode: register
 content:
   account:
     weight: 0
@@ -24,13 +27,25 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  profile_profiles:
+    type: profile_form
+    weight: 90
+    region: content
+    settings:
+      form_mode: default
+    third_party_settings: {  }
   timezone:
     weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
+  user_profiles:
+    type: profile_form
+    weight: 90
+    region: content
+    settings:
+      form_mode: default
+    third_party_settings: {  }
 hidden:
   path: true
-  profile_profiles: true
   track_team_profiles: true
-  user_profiles: true
