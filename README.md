@@ -58,6 +58,7 @@ Current local aliases
 
 - `ddev start`
 - Require all packages `ddev composer install`
+- Create a .env file `cp .env.example .env`
 
 #### 2.2] Install drupal site from scratch (Needed to be done for initial setup).
 - Check database name using `drush @alias status` (if performing on server).
@@ -100,6 +101,7 @@ Active development branch is `develop`
 
 ## Troubleshooting
 - Use github issues to report any issues you encounter.
+- Working with lagoon: https://docs.amazee.io/lagoon-documentation/using-lagoon-the-basics/setup-project/
 
 ## How to pickup issues
 - Go to https://github.com/users/guptahemant/projects/3
