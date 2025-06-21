@@ -40,5 +40,6 @@ recipes/
 #Ignore keys directory
 /keys/*
 
-# Ignore wkhtml directory
-wkhtml
+# Ignore amazeeio/drupal_integrations related changes
+/.drush-lock-update
+/drush/Commands/contrib
