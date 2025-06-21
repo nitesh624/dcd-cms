@@ -16,6 +16,9 @@ recipes/
 /docroot/libraries/
 /.drush-lock-update
 /drush/Commands/contrib
+web/sites/default/all.settings.php
+web/sites/default/default.development.services.yml
+web/sites/default/settings.lagoon.php
 
 # Ignore sensitive information
 /web/sites/*/settings.local.php
