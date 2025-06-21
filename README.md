@@ -101,7 +101,7 @@ Active development branch is `develop`
 
 ## Troubleshooting
 - Use github issues to report any issues you encounter.
-- Working with lagoon: https://docs.amazee.io/lagoon-documentation/using-lagoon-the-basics/setup-project/
+- Working with lagoon: https://github.com/lagoon-examples
 
 ## How to pickup issues
 - Go to https://github.com/users/guptahemant/projects/3
