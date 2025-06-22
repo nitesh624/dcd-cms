@@ -57,3 +57,9 @@ environments:
         schedule: "M * * * *"
         command: drush cron
         service: cli
+  develop:
+    cronjobs:
+      - name: drush hourly cron
+        schedule: "M * * * *"
+        command: drush cron
+        service: cli

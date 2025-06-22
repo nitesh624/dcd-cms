@@ -49,10 +49,18 @@ be found by running:
 ```
 ddev drush sa
 ```
+Lagoon aliases
+```
+ddev drush la
+````
 For finding out the URL of a site use the information in drush alias.
 
 Current local aliases
 - ddev.local - Use to target local site.
+
+Lagoon aliases
+- lagoon.dcd-develop - Dev env
+- lagoon.dcd-main - Prod env
 
 #### 2.1] Run the following command to setup project
 
@@ -67,8 +75,12 @@ Current local aliases
 - `ddev drush si --existing-config -y`
 - `ddev drush cim -y`
 
-#### 2.3] Syncing local with remote database (To be updated).
+#### 2.3] Syncing local with remote database.
+- You need to have an account in lagoon, and should have added your ssh key.
 - Authorize ddev to use your keys `ddev auth ssh`
+- Pulling the dev db and files using ddev `ddev pull lagoon`
+
+Manually pull and import the DB
 - Take the db dump from the remote site: `ddev drush @alias sql-dump > db_dump.sql`
 - Import db dump to a local site: `ddev drush @alias sql-cli < db_dump.sql`
 - To login use `ddev drush @alias uli`
