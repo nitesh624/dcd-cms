@@ -69,9 +69,6 @@ Lagoon aliases
 - Create a .env file `cp .env.example .env`
 
 #### 2.2] Install drupal site from scratch (Needed to be done for initial setup).
-- Check database name using `drush @alias status` (if performing on server).
-- Verify database name on acquia cloud.
-- Cloud path: Application > Environment > Databases > Database name > Settings > Name.
 - `ddev drush si --existing-config -y`
 - `ddev drush cim -y`
 
