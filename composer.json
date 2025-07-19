@@ -43,7 +43,7 @@
         "drupal/views_bulk_operations": "^4.3",
         "drupal/views_data_export": "^1.5",
         "drupal/webform": "@beta",
-        "drush/drush": "^13"
+        "drush/drush": "^13.6"
     },
     "conflict": {
         "drupal/drupal": "*"
