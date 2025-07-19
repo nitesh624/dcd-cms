@@ -1,5 +1,3 @@
-$bg: #e0e0e0;
-.box {
-  background: $bg;
-  padding: 1rem;
-}
+@use 'abstracts/variables';
+@use 'base/fonts';
+@use 'base/typography';
